@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: npm install and build webpack
         run: |
-          npm install
+          npm install --force
           npm run build
       - uses: actions/upload-artifact@v3
         with:
@@ -75,7 +75,7 @@ jobs:
       - name: "Login via Azure CLI"
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
 
       - uses: azure/docker-login@v1
         with:
