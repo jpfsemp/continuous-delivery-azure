@@ -18,7 +18,7 @@
 
 <!--step0
 
-Create two deployment workflows using GitHub Actions and Microsoft Azure - Deploy.
+Create two deployment workflows using GitHub Actions and Microsoft Azure - Deploy - Destroy.
 
 - **Who is this for**: Developers, DevOps Engineers, new GitHub users, students, and teams.
 - **What you'll learn**: We'll learn how to create a workflow that enables Continuous Delivery using GitHub Actions and Microsoft Azure.
