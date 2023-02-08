@@ -6,7 +6,7 @@ on:
 
 env:
   PACKAGES_TOKEN: ${{secrets.CR_PAT}}
-  AZURE_RESOURCE_GROUP: rg-solar-jpfs-dev
+  AZURE_RESOURCE_GROUP: ${{ var.AZURE_RESOURCE_GROUP }}
   AZURE_APP_PLAN: actions-ttt-deployment
   AZURE_LOCATION: 'eastus'
   #################################################
@@ -32,10 +32,10 @@ jobs:
         with:
           creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
 
-     # - name: Create Azure resource group
-     #   if: success()
-     #   run: |
-     #     az group create --location ${{env.AZURE_LOCATION}} --name ${{env.AZURE_RESOURCE_GROUP}} --subscription ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      - name: Create Azure resource group
+        if: success()
+        run: |
+          az group create --location ${{env.AZURE_LOCATION}} --name ${{env.AZURE_RESOURCE_GROUP}} --subscription ${{secrets.AZURE_SUBSCRIPTION_ID}}
       - name: Create Azure app service plan
         if: success()
         run: |
